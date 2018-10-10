@@ -201,7 +201,15 @@ spec:
     k8s-app: kubernetes-dashboard
 ```
 
-3）通过执行如下的命令部署Web UI
+3）编辑kubernetes-dashboard.yaml文件。  
+修改image为 k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.1  
+所有kubernetes节点拉取dashboard镜像  
+```
+docker pull apm70plus/kubernetes-dashboard-amd64:v1.8.1
+docker tag apm70plus/kubernetes-dashboard-amd64:v1.8.1  k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.1
+```
+
+4）通过执行如下的命令部署Web UI
 ```
 kubectl apply -f kubernetes-dashboard.yaml
 ```
