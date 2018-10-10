@@ -149,7 +149,7 @@ RKE工具是满足高可用的。您可以在集群配置文件中指定多个�
 
 ```
 # 1. 下载指定版本（v1.11.3）的二进制文件
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.11.3/bin/linux/amd64/kubectl
+wget https://storage.googleapis.com/kubernetes-release/release/v1.11.3/bin/linux/amd64/kubectl
 # 2. 修改为可执行文件
 chmod +x ./kubectl
 # 3. 移动到系统路径$PATH
