@@ -8,9 +8,11 @@
 ### 1.1 服务器或虚拟机（使用Ubuntu 16.04 Server版）  
 | 角色        | 系统   |  主机名  |
 | --------   | -----  | :----:  |
+| rke (安装k8s) | Ubuntu 16.04 |  rke_server |
 | master node  | Ubuntu 16.04 |  master1 |
 | worker node  | Ubuntu 16.04 |  worker1 |
-| worker node  | Ubuntu 16.04 |  worker2 |
+| worker node  | Ubuntu 16.04 |  worker2 |  
+
 *注意：各主机的hostname主机名必须不同！可通过 /etc/hostname 和 /etc/hosts 文件修改；另外，/etc/hosts 配置所有节点的本地域名解析，例如：*
 
 ```
@@ -19,8 +21,9 @@
 10.0.100.5  worker2
 ```
 
-### 1.2 Docker  
-Rancher官方推荐版本 1.12.6，1.13.1，17.03.2，这三个版本都是官方测试通过的，我采用的17.03.2-ce版
+### 1.2 安装Docker  
+Rancher官方推荐版本 1.12.6，1.13.1，17.03.2，这三个版本都是官方测试通过的，我采用的17.03.2-ce版  
+
 | Docker Version| Install Script  |
 | --------   | -----  |
 | 17.03.2  | curl https://releases.rancher.com/install-docker/17.03.sh \| sh |
@@ -70,7 +73,10 @@ ssh-keygen -t rsa
 ssh-copy-id docker_user@{ip}
 ```
 
+### 1.7 所有节点重启，使配置生效
+
 ## 2、安装Kubernetes
+RKE主机采用ssh原理远程安装kubernetes集群，所以kubernetes节点不需要安装RKE。本章节所有操作只在RKE机器上执行
 
 ### 2.1 安装RKE
 从Rancher的官方[GitHub](https://github.com/rancher/rke/releases/latest)仓库下载RKE。RKE可以在Linux和MacOS机器上运行。
