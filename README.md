@@ -136,7 +136,26 @@ RKE是一个幂等工具，可以运行多次，且每次均产生相同的输�
 network: 
     plugin: calico
 ```
-### 2.5 高可用
+### 2.5 安装Helm（k8s应用的包管理工具）
+1）安装helm客户端  
+```
+curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+2）创建tiller的serviceaccount和clusterrolebinding  
+```
+kubectl -n kube-system create serviceaccount tiller
+kubectl create clusterrolebinding tiller \
+  --clusterrole cluster-admin \
+  --serviceaccount=kube-system:tiller
+```
+3) 安装helm服务端tiller    
+```
+# 指定aliyun镜像（不用gcr.io/kubernetes-helm/tiller:v2.11.0的原因你懂的...）
+helm init --service-account -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.11.0 tiller
+```
+### 2.6 高可用
 RKE工具是满足高可用的。您可以在集群配置文件中指定多个控制面板主机，RKE将在其上部署主控组件。
 
 默认情况下，kubelets被配置为连接到nginx-proxy服务的地址——127.0.0.1:6443，该代理会向所有主节点发送请求。
@@ -215,7 +234,7 @@ kubectl apply -f kubernetes-dashboard.yaml
 
 通过执行如下命令获取系统Token信息：
 ```
-kubectl describe  secret admin-user --namespace=kube-system
+kubectl describe  secret tiller --namespace=kube-system
 ```
 
 3）导入Token
