@@ -210,52 +210,17 @@ kubectl apply -f kubernetes-dashboard.yaml
 ```
 
 ### 4.2 访问Web UI
-1）在浏览器中输入:https://{Master IP}:30001，提示录入登录凭证
-2）创建一个管理员用户
-创建admin-user.yaml文件
-```
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: admin-user
-  namespace: kube-system
-
----
-
-apiVersion: rbac.authorization.k8s.io/v1beta1kind: ClusterRoleBinding 
-metadata: 
-  name: admin-user
-  annotations:
-    rbac.authorization.kubernetes.io/autoupdate: "true"
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: admin-user
-  namespace: kube-system
-```
-
-通过执行如下命令创建admin-user
-```
-kubectl create -f admin-user.yaml
-```
-
-3）获取管理员用户的Token
+1）在浏览器中输入:https://{Master IP}:30001，提示录入登录凭证  
+2）获取管理员用户的Token
 
 通过执行如下命令获取系统Token信息：
 ```
 kubectl describe  secret admin-user --namespace=kube-system
 ```
 
-4）添加Token至kubeconfig文件
+3）导入Token
 
-通过编辑工具打开kubeconfig文件(~/.kube/config)，并添加Token。
-
-5）导入kubeconfig文件
-
-在界面中导入kubeconfig文件。完成UI登录
+在界面中导入token,完成UI登录
 
 ## 参考资料
 [Kubernetes-基于RKE进行Kubernetes的安装部署](https://www.kubernetes.org.cn/4004.html)  
