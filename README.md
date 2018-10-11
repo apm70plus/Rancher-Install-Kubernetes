@@ -59,7 +59,7 @@ RKE通过SSH tunnel进行安装部署，需要事先建立RKE到各节点的SSH�
 
 1）在各个节点上创建ssh用户，并将其添加至docker组中 
 ```
-useradd docker_user
+adduser docker_user
 usermod -aG docker docker_user
 ```
 
