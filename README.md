@@ -212,7 +212,7 @@ kubectl apply -f kubernetes-dashboard.yaml
 ### 4.2 访问Web UI
 1）在浏览器中输入:https://{Master IP}:30001，提示录入登录凭证
 2）创建一个管理员用户
-创建amind-user.yaml文件
+创建admin-user.yaml文件
 ```
 apiVersion: v1
 kind: ServiceAccount
