@@ -244,3 +244,4 @@ kubectl describe  secret tiller --namespace=kube-system
 ## 参考资料
 [Kubernetes-基于RKE进行Kubernetes的安装部署](https://www.kubernetes.org.cn/4004.html)  
 [Rancher官网](https://rancher.com/docs/rancher/v2.x/en/installation/)
+[Kubernets handbook](https://jimmysong.io/kubernetes-handbook/practice/helm.html)
