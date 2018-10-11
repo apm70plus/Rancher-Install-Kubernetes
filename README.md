@@ -202,12 +202,7 @@ spec:
 ```
 
 3）编辑kubernetes-dashboard.yaml文件。  
-修改image为 k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.1  
-所有kubernetes节点拉取dashboard镜像  
-```
-docker pull apm70plus/kubernetes-dashboard-amd64:v1.8.1
-docker tag apm70plus/kubernetes-dashboard-amd64:v1.8.1  k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.1
-```
+修改image为 rancher/kubernetes-dashboard-amd64:v1.8.3  
 
 4）通过执行如下的命令部署Web UI
 ```
